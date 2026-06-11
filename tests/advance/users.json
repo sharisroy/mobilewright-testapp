@@ -1,0 +1,11 @@
+{
+  "name": "Haris Roy",
+  "updatedName": "Haris Chandra Roy",
+  "email": "haris@mail.com",
+  "oldPassword": "Password123",
+  "newPassword": "Password456",
+  "gender": "Male",
+  "dob": "25/05/2001",
+  "address": "123 Main Street, Dhaka",
+  "mobile": "+912345678"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "mobilewright test",
+    "test:file": "mobilewright test tests/testApp.spec.ts"
+  },
+  "devDependencies": {
+    "@mobilewright/test": "^0.0.41",
+    "@types/node": "latest",
+    "mobilewright": "^0.0.41"
+  }
+}
