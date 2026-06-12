@@ -97,7 +97,7 @@ jobs:
             # --retries 2: gesture tests (long-press, swipe) are timing-sensitive
             # on swiftshader emulators — retry gives them a fair chance before failing.
             # --grep "@gitAction": run every test tagged @gitAction across the suite.
-            MW_DEVICE_ID=test npx mobilewright test --grep "basic user flow" --retries 2 --reporter html
+            MW_DEVICE_ID=test npx mobilewright test --grep "@gitAction" --retries 2 --reporter html
 
       - name: Upload HTML report (downloadable artifact)
         if: always()
