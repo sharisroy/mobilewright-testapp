@@ -24,7 +24,7 @@ const dismissSavePasswordDialog = async (screen: any, maxWaitMs = 8000) => {
 
 // ── Test ──────────────────────────────────────────────────────────────────────
 
-test('list apps installed on test device', { tag: ['@smoke'] }, async ({ device }, testInfo) => {
+test('list apps installed on test device', { tag: ['@smoke',  '@gitAction'] }, async ({ device }, testInfo) => {
     const apps = await device.listApps();
 
     console.log(`Installed apps (${apps.length}):`);

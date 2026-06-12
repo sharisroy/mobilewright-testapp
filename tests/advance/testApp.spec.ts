@@ -5,7 +5,7 @@ const APP_ID = 'com.haris.testapp';
 
 test.use({ bundleId: APP_ID, platform: 'android' });
 
-test('launch the app registration, login, update the profile change the password, login again', { tag: ['@regression', '@sanity', '@gitAction'] }, async ({ screen, device }) => {
+test('launch the app registration, login, update the profile change the password, login again', { tag: ['@regression', '@sanity'] }, async ({ screen, device }) => {
     test.setTimeout(600_000);
     const {
         id,

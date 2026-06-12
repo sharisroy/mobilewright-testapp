@@ -103,7 +103,7 @@ test('holding the long press button shows a bottom sheet with success text', { t
     ).toBeVisible({ timeout: 5_000 });
 });
 
-test('bottom sheet can be dismissed with GOT IT', { tag: ['@regression','@gitAction'] }, async ({ screen, device }) => {
+test('bottom sheet can be dismissed with GOT IT', { tag: ['@regression'] }, async ({ screen, device }) => {
     const { freshLaunchToLogin } = createHelpers(screen, device, APP_ID);
 
     await goToFeaturesScreen(screen, freshLaunchToLogin);
