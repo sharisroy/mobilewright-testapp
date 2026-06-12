@@ -16,7 +16,7 @@ export type UserFixture = {
     oldPassword: string;
     newPassword: string;
     gender: string;
-    dob: string; // DD/MM/YYYY
+    dob: string;    // DD/MM/YYYY
     address: string;
     mobile: string;
 };
@@ -321,7 +321,7 @@ export function createHelpers(screen: any, device: any, APP_ID: string) {
             return;
         }
 
-        adbKeyEvents([123]); // KEYCODE_MOVE_END — move cursor to end before deleting
+        adbKeyEvents([123]);  // KEYCODE_MOVE_END — move cursor to end before deleting
         await sleep(100);
 
         const deleteCount = beforeText.length > 0 ? beforeText.length + 3 : 0;

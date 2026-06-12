@@ -378,7 +378,7 @@ test.describe('Negative: Login', () => {
 
         await freshLaunchToLogin();
 
-        // Fill only email, leave password empty
+        // Fill only email, leave password empty 
         await fillFreshText(screen.getByTestId(id('et_login_email')), USER.email);
         await dismissKeyboard();
         await screen.getByTestId(id('btn_login')).tap();

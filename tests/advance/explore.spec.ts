@@ -711,7 +711,7 @@ test('sending a push notification delivers it to the notification shade', { tag:
     await screen.getByLabel('Request Notification Permission Button').tap();
     await sleep(2_000);
 
-    // On HONOR Android 16 the onRequestPermissionsResult callback does not fire even
+
     // when permission is pre-granted (MagicOS quirk), so we trigger the notification
     // directly to validate the full receive-and-read flow.  On standard Android devices
     // the button tap alone would deliver the notification via the callback.
