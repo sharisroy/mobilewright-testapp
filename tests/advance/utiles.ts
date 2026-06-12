@@ -102,7 +102,7 @@ export const ERROR = {
 
 // ── Test data ─────────────────────────────────────────────────────────────────
 
-const _runId = Date.now().toString(36);
+// const _runId = Date.now().toString(36);
 
 export const collectAll = (nodes: any[], result: any[] = []): any[] => {
     for (const node of nodes) {
@@ -115,7 +115,7 @@ export const collectAll = (nodes: any[], result: any[] = []): any[] => {
 export const USER: UserFixture = {
     name: 'Haris Roy',
     updatedName: 'Haris Chandra Roy',
-    email: `haris+${_runId}@mail.com`,
+    email: `haris@mail.com`,
     oldPassword: 'Password123',
     newPassword: 'Password456',
     gender: 'Male',

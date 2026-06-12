@@ -5,6 +5,7 @@
 [![Language](https://img.shields.io/badge/language-TypeScript-3178C6)](https://www.typescriptlang.org)
 [![Runtime](https://img.shields.io/badge/node-%E2%89%A518-339933)](https://nodejs.org)
 [![Tests](https://img.shields.io/badge/tests-35%2B-success)](#test-suites)
+[![Live Report](https://img.shields.io/badge/report-GitHub%20Pages-2088FF?logo=github)](https://sharisroy.github.io/mobilewright-testapp/)
 
 Comprehensive UI automation for the **Mobile QA Sandbox** Android app
 ([`com.haris.testapp`](https://github.com/sharisroy/mobile-qa-sandbox)), built on
@@ -787,6 +788,24 @@ npx mobilewright test --reporter json      # machine-readable, for dashboards
 
 The report shows per-test status, console logs, step timings, and **screenshots on failure**.
 
+### View the latest report online (GitHub Pages)
+
+CI publishes the HTML report to **GitHub Pages** after every run on `main`, so you can read it
+in a browser without downloading an artifact:
+
+**🔗 [sharisroy.github.io/mobilewright-testapp](https://sharisroy.github.io/mobilewright-testapp/)**
+
+The page is refreshed by the `deploy-report` job in
+[`.github/workflows/mobile-tests.yml`](.github/workflows/mobile-tests.yml) — it always shows
+the **most recent `main` run** (published even when tests fail, so failures stay debuggable).
+For a specific run, open **Actions → the run → `deploy-report`** and use the URL in its
+`github-pages` environment box.
+
+> **First-time setup (once per repo):** Settings → Pages → *Build and deployment* →
+> **Source: GitHub Actions**. Then push to `main` (or run the workflow manually) to publish the
+> first report. PR runs intentionally don't publish — they only attach the downloadable
+> artifact below — so they can't overwrite the live `main` report.
+
 ### Sharing reports
 
 ```bash
@@ -943,6 +962,7 @@ flowchart LR
     F --> G[adb install + agent install]
     G --> H["mobilewright test --grep @smoke|@sanity"]
     H --> I[Upload HTML report artifact]
+    I --> J["Deploy to GitHub Pages (main only)"]
 ```
 
 **Pipeline tips**
@@ -950,6 +970,8 @@ flowchart LR
 - Gate PRs on `@smoke`; run the full suite (incl. `@negative`) nightly via `schedule:`.
 - Use `--shard i/total` across parallel jobs and `merge-reports` to combine results.
 - Always `upload-artifact` the report with `if: always()` so failures are debuggable.
+- Publish the report to **GitHub Pages** (`actions/deploy-pages`) for a browsable link —
+  see [View the latest report online](#view-the-latest-report-online-github-pages).
 - Pin `npm ci` (not `npm install`) in CI for reproducible installs.
 
 ---

@@ -12,10 +12,13 @@ function resolveDeviceId(): string | undefined {
   if (process.env.MW_DEVICE_ID) return process.env.MW_DEVICE_ID;
   if (process.env.ANDROID_SERIAL) return process.env.ANDROID_SERIAL;
   try {
-    const out = execSync('adb devices', { encoding: 'utf8' });
-    const serials = out.split('\n')
-      .filter(l => l.includes('\tdevice'))
-      .map(l => l.split('\t')[0].trim());
+    // `adb devices` lines look like "<serial>\t<state>"; keep only online
+    // ("device") entries, skipping offline/unauthorized and the header.
+    const serials = execSync('adb devices', { encoding: 'utf8' })
+      .split('\n')
+      .map(line => line.split('\t'))
+      .filter(([, state]) => state?.trim() === 'device')
+      .map(([serial]) => serial.trim());
     return serials.find(s => !s.startsWith('emulator-')); // undefined → let mobilewright choose
   } catch {
     return undefined;
