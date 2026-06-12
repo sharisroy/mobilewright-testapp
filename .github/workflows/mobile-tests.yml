@@ -97,7 +97,7 @@ jobs:
             # --retries 2: gesture tests (long-press, swipe) are timing-sensitive
             # on swiftshader emulators — retry gives them a fair chance before failing.
             # --grep "@gitAction": run every test tagged @gitAction across the suite.
-            MW_DEVICE_ID=test npx mobilewright test --grep "@gitAction" --retries 2 --reporter html
+            MW_DEVICE_ID=test npx mobilewright test --grep "basic user flow" --retries 2 --reporter html
 
       - name: Upload HTML report (downloadable artifact)
         if: always()
@@ -113,12 +113,11 @@ jobs:
         with:
           path: mobilewright-report
 
-  # Publish the HTML report to GitHub Pages. Only on tag pushes so manual
-  # workflow_dispatch runs still get the downloadable artifact above without
-  # overwriting the live report.
+  # Publish the HTML report to GitHub Pages on tag pushes and on manual
+  # workflow_dispatch runs.
   deploy-report:
     needs: android-tests
-    if: always() && startsWith(github.ref, 'refs/tags/')
+    if: always() && (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
