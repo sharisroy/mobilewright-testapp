@@ -7,6 +7,7 @@ import { execSync } from 'child_process';
 //   2. otherwise the first PHYSICAL device (its mobilecli id == its adb serial).
 // The adb helpers in tests/advance/utiles.ts (getAdbSerial) resolve the SAME
 // device, so the driver and raw adb calls always act on one device.
+
 function resolveDeviceId(): string | undefined {
   if (process.env.MW_DEVICE_ID) return process.env.MW_DEVICE_ID;
   if (process.env.ANDROID_SERIAL) return process.env.ANDROID_SERIAL;
