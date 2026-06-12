@@ -5,7 +5,7 @@ const APP_ID = 'com.haris.testapp';
 
 test.use({ bundleId: APP_ID, platform: 'android' });
 
-test('launch the app registration, login, update the profile change the password, login again', { tag: ['@regression', '@sanity'] }, async ({ screen, device }) => {
+test('launch the app registration, login, update the profile change the password, login again', { tag: ['@regression', '@sanity', '@gitAction'] }, async ({ screen, device }) => {
     test.setTimeout(600_000);
     const {
         id,
@@ -226,7 +226,7 @@ test('launch the app registration, login, update the profile change the password
 test.describe('Negative: Registration', () => {
     test.describe.configure({ timeout: 180_000 });
 
-    test('rejects mismatched confirm password', { tag: ['@negative'] }, async ({ screen, device }) => {
+    test('rejects mismatched confirm password', { tag: ['@negative', '@gitAction'] }, async ({ screen, device }) => {
         const {
             freshLaunchToLogin, fillFreshText, dismissKeyboard, waitForErrorVisible,
         } = createHelpers(screen, device, APP_ID);
@@ -303,7 +303,7 @@ test.describe('Negative: Registration', () => {
 test.describe('Negative: Login', () => {
     test.describe.configure({ timeout: 180_000 });
 
-    test('rejects wrong password', { tag: ['@negative'] }, async ({ screen, device }) => {
+    test('rejects wrong password', { tag: ['@negative', '@gitAction'] }, async ({ screen, device }) => {
         const {
             id, freshLaunchToLogin, registerAndGoToLogin,
             fillFreshText, dismissKeyboard, waitForErrorVisible,
@@ -330,7 +330,7 @@ test.describe('Negative: Login', () => {
         expect(errorShown).toBe(true);
     });
 
-    test('rejects unregistered email', { tag: ['@negative'] }, async ({ screen, device }) => {
+    test('rejects unregistered email', { tag: ['@negative', '@gitAction'] }, async ({ screen, device }) => {
         const {
             id, freshLaunchToLogin,
             fillFreshText, dismissKeyboard, waitForErrorVisible,
@@ -403,7 +403,7 @@ test.describe('Negative: Login', () => {
         expect(errorShown).toBe(true);
     });
 
-    test('rejects invalid email format', { tag: ['@negative'] }, async ({ screen, device }) => {
+    test('rejects invalid email format, ', { tag: ['@negative', '@gitAction'] }, async ({ screen, device }) => {
         const {
             id, freshLaunchToLogin,
             fillFreshText, dismissKeyboard, waitForErrorVisible,

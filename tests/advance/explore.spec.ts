@@ -103,7 +103,7 @@ test('holding the long press button shows a bottom sheet with success text', { t
     ).toBeVisible({ timeout: 5_000 });
 });
 
-test('bottom sheet can be dismissed with GOT IT', { tag: ['@regression'] }, async ({ screen, device }) => {
+test('bottom sheet can be dismissed with GOT IT', { tag: ['@regression','@gitAction'] }, async ({ screen, device }) => {
     const { freshLaunchToLogin } = createHelpers(screen, device, APP_ID);
 
     await goToFeaturesScreen(screen, freshLaunchToLogin);
@@ -125,7 +125,7 @@ test('bottom sheet can be dismissed with GOT IT', { tag: ['@regression'] }, asyn
 // Swipe card
 // ══════════════════════════════════════════════════════════════════════════════
 
-test('swiping the card right shows a success message', { tag: ['@regression', '@sanity', '@smoke'] }, async ({ screen, device }) => {
+test('swiping the card right shows a success message', { tag: ['@regression', '@sanity', '@smoke', '@gitAction'] }, async ({ screen, device }) => {
     const { freshLaunchToLogin } = createHelpers(screen, device, APP_ID);
 
     await goToFeaturesScreen(screen, freshLaunchToLogin);

@@ -38,7 +38,7 @@ test('list apps installed on test device', { tag: ['@smoke'] }, async ({ device 
     expect(testApp).toBeTruthy();
 });
 
-test('basic user flow: register, login, and update profile', { tag: ['@regression'] }, async ({ screen, device }) => {
+test('basic user flow: register, login, and update profile', { tag: ['@regression', '@gitAction'] }, async ({ screen, device }) => {
 
     // ── Launch app ────────────────────────────────────────────────────────
     await device.launchApp('com.haris.testapp');

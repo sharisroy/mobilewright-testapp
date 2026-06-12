@@ -4,6 +4,7 @@ node_modules/
 
 # ── Test output & reports ──────────────────────────────────
 playwright-report/
+mobilewright-report/
 test-results/
 blob-report/
 report.zip
